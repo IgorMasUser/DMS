@@ -100,6 +100,4 @@ namespace Dms.Core.Infrastructure.Logging
             logEvent.AddOrUpdateProperty(pf.CreateProperty("TimeStamp", logEvent.Timestamp.UtcDateTime));
         }
     }
-
-
 }
