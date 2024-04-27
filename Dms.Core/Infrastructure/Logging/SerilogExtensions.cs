@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Serilog.Configuration;
+﻿using Serilog.Configuration;
 using Serilog.Events;
 using Serilog.Sinks.MSSqlServer;
 using Serilog;

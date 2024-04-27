@@ -1,8 +1,8 @@
-﻿namespace Dms.Core.Domain.Common
+﻿namespace Dms.Core.Domain.DomainBase
 {
     public abstract class Entity
     {
-        public Guid Id { get; protected set; }
+        public int Id { get; protected set; }
 
         public override bool Equals(object obj)
         {

@@ -1,10 +1,10 @@
-﻿namespace Dms.Core.Domain.Common
+﻿namespace Dms.Core.Domain.DomainBase
 {
     public abstract class ValueObject
     {
         protected static bool EqualOperator(ValueObject left, ValueObject right)
         {
-            if ((left == null) ^ (right == null))
+            if (left == null ^ right == null)
             {
                 return false;
             }
@@ -34,7 +34,7 @@
         public override int GetHashCode()
         {
             return (from x in GetEqualityComponents()
-                    select x?.GetHashCode() ?? 0).Aggregate((int x, int y) => x ^ y);
+                    select x?.GetHashCode() ?? 0).Aggregate((x, y) => x ^ y);
         }
     }
 }

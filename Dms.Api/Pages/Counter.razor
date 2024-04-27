@@ -1,5 +1,7 @@
 ﻿@page "/counter"
+@using Dms.Core.Application.Common.Interfaces;
 @inject ILogger<Counter> logger
+@inject ILogsDbContext dbContext
 
 <PageTitle>Counter</PageTitle>
 
@@ -16,5 +18,7 @@
     {
         currentCount++;
         logger.LogInformation($"Counter is clicked {currentCount} times");
+        var logs = dbContext.Loggers.FirstOrDefault();
+        logger.LogInformation($"I get this log from DB:{logs}");
     }
 }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "13ZIF+ZA9WGTWbN74XrqXTK2DLVtcdithoHQXphxhzsLCstAozK8wzahUVl6XcvhfkM1TTsaQdaLg/r8KRRZZg==",
+  "dgSpecHash": "gzyYn+efTsv6Z+AmCB2bLzO7xUSuqp6wvhLOIVNUbwIpi6K5NjLljRH2WcqelqV8dpngyFQ+1gLh4Z4j85QKKg==",
   "success": true,
   "projectFilePath": "E:\\Projects\\Dms\\Dms.Core\\Dms.Core.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,11 @@
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.1\\microsoft.data.sqlclient.5.0.1.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\5.0.1\\microsoft.data.sqlclient.sni.runtime.5.0.1.nupkg.sha512",
+    "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.18\\microsoft.entityframeworkcore.7.0.18.nupkg.sha512",
+    "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.18\\microsoft.entityframeworkcore.abstractions.7.0.18.nupkg.sha512",
+    "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.18\\microsoft.entityframeworkcore.analyzers.7.0.18.nupkg.sha512",
+    "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.extensions.configuration.binder\\8.0.0\\microsoft.extensions.configuration.binder.8.0.0.nupkg.sha512",
