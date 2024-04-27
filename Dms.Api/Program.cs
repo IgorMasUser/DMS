@@ -1,4 +1,5 @@
 using Dms.Api.Data;
+using Dms.Api.Extensions;
 using Dms.Core.Infrastructure.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddSqlServerDbContext(builder.Configuration);
 
 builder.Host.AddSerilog();
 

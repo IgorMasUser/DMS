@@ -19,6 +19,6 @@
         currentCount++;
         logger.LogInformation($"Counter is clicked {currentCount} times");
         var logs = dbContext.Loggers.FirstOrDefault();
-        logger.LogInformation($"I get this log from DB:{logs}");
+        logger.LogInformation($"I get this log from DB:{logs.Message}");
     }
 }
