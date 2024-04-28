@@ -9,6 +9,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddSqlServerDbContext(builder.Configuration);
+builder.Services.AddHttpContextAccessor();
 
 builder.Host.AddSerilog();
 

@@ -8,6 +8,8 @@ using System.Data;
 using Microsoft.Extensions.Hosting;
 using Serilog.Core;
 using Constants = Dms.Core.Infrastructure.Configuration.Constants;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Http;
 
 namespace Dms.Core.Infrastructure.Logging
 {
@@ -16,12 +18,17 @@ namespace Dms.Core.Infrastructure.Logging
     {
         public static void AddSerilog(this IHostBuilder builder, bool writeToProviders = true)
         {
-            builder.UseSerilog((context, configuration) =>
+            builder.UseSerilog((context, serviceProvider, configuration) =>
+            {
+                var httpContextAccessor = serviceProvider.GetService<IHttpContextAccessor>();
+                if (httpContextAccessor is null) throw new ArgumentNullException(nameof(httpContextAccessor));
+
                 configuration.ReadFrom.Configuration(context.Configuration)
-                    .Enrich.FromLogContext()
-                    .Enrich.WithUtcTime()
-                    .WriteToDatabase(context.Configuration)
-            , writeToProviders: writeToProviders);
+                             .Enrich.FromLogContext()
+                             .Enrich.WithUtcTime()
+                             .Enrich.WithCorrelationId(httpContextAccessor)
+                             .WriteToDatabase(context.Configuration);
+            }, writeToProviders: writeToProviders);
         }
 
         private static void WriteToDatabase(this LoggerConfiguration serilogConfig, IConfiguration configuration)
@@ -64,10 +71,6 @@ namespace Dms.Core.Infrastructure.Logging
             {
                 new()
                 {
-                    ColumnName = "UserName", PropertyName = "UserName", DataType = SqlDbType.NVarChar, DataLength = 64
-                },
-                new()
-                {
                     ColumnName = "CorrelationId", PropertyName = "CorrelationId", DataType = SqlDbType.NVarChar,
                     DataLength = 64
                 }
@@ -89,6 +92,11 @@ namespace Dms.Core.Infrastructure.Logging
         {
             return enrichmentConfiguration.With<UtcTimestampEnricher>();
         }
+
+        public static LoggerConfiguration WithCorrelationId(this LoggerEnrichmentConfiguration enrichmentConfiguration, IHttpContextAccessor httpContextAccessor)
+        {
+            return enrichmentConfiguration.With(new CorrelationIdEnricher(httpContextAccessor));
+        }
     }
 
 
@@ -97,6 +105,22 @@ namespace Dms.Core.Infrastructure.Logging
         public void Enrich(LogEvent logEvent, ILogEventPropertyFactory pf)
         {
             logEvent.AddOrUpdateProperty(pf.CreateProperty("TimeStamp", logEvent.Timestamp.UtcDateTime));
+        }
+    }
+
+    internal class CorrelationIdEnricher : ILogEventEnricher
+    {
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public CorrelationIdEnricher(IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+        }
+
+        public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
+        {
+            var correlationId = _httpContextAccessor.HttpContext?.TraceIdentifier ?? "N/A";
+            logEvent.AddOrUpdateProperty(propertyFactory.CreateProperty("CorrelationId", correlationId));
         }
     }
 }

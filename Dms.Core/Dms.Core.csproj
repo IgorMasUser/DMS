@@ -16,4 +16,8 @@
 		<PackageReference Include="Serilog.Sinks.MSSqlServer" Version="6.3.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Infrastructure\Utils\" />
+	</ItemGroup>
+
 </Project>
