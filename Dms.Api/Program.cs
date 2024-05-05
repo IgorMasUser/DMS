@@ -1,6 +1,7 @@
 using Dms.Api.Data;
 using Dms.Api.Extensions;
 using Dms.Core.Infrastructure.Logging;
+using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddSqlServerDbContext(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddMudServices();
 
 builder.Host.AddSerilog();
 
