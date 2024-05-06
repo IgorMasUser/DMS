@@ -1,10 +1,6 @@
 {
   "Files": [
     {
-      "Id": "E:\\Projects\\Dms\\Dms.Api\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\Dms.Api.bundle.scp.css",
-      "PackagePath": "staticwebassets\\Dms.Api.bundle.scp.css"
-    },
-    {
       "Id": "E:\\Projects\\Dms\\Dms.Api\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },

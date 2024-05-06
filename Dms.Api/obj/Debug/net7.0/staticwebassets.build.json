@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "zqAtqFzPJoyvE0CT0nlnrWdvYaR+iNSsQRo1UTQ9CRI=",
+  "Hash": "3/lkOaScScNnOUR3a+VrdkCoxKirGpE3DF9JW4oZg1Y=",
   "Source": "Dms.Api",
   "BasePath": "_content/Dms.Api",
   "Mode": "Default",
@@ -49,40 +49,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Igor Maslov\\.nuget\\packages\\mudblazor\\6.19.1\\staticwebassets\\MudBlazor.min.js"
-    },
-    {
-      "Identity": "E:\\Projects\\Dms\\Dms.Api\\obj\\Debug\\net7.0\\scopedcss\\bundle\\Dms.Api.styles.css",
-      "SourceId": "Dms.Api",
-      "SourceType": "Computed",
-      "ContentRoot": "E:\\Projects\\Dms\\Dms.Api\\obj\\Debug\\net7.0\\scopedcss\\bundle\\",
-      "BasePath": "_content/Dms.Api",
-      "RelativePath": "Dms.Api.styles.css",
-      "AssetKind": "All",
-      "AssetMode": "CurrentProject",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ApplicationBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "E:\\Projects\\Dms\\Dms.Api\\obj\\Debug\\net7.0\\scopedcss\\bundle\\Dms.Api.styles.css"
-    },
-    {
-      "Identity": "E:\\Projects\\Dms\\Dms.Api\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\Dms.Api.bundle.scp.css",
-      "SourceId": "Dms.Api",
-      "SourceType": "Computed",
-      "ContentRoot": "E:\\Projects\\Dms\\Dms.Api\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\",
-      "BasePath": "_content/Dms.Api",
-      "RelativePath": "Dms.Api.bundle.scp.css",
-      "AssetKind": "All",
-      "AssetMode": "Reference",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ProjectBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "E:\\Projects\\Dms\\Dms.Api\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\Dms.Api.bundle.scp.css"
     },
     {
       "Identity": "E:\\Projects\\Dms\\Dms.Api\\wwwroot\\favicon.png",

@@ -1,0 +1,55 @@
+@using Dms.Api.Services.NavigationMenu;
+
+<MudNavMenu>
+    <MudIcon Class="ml-6 mr-2"
+             Color="Color.Primary"
+             Icon=@Icons.Material.Filled.DisplaySettings
+             Size="Size.Large" />
+    <div class="ml-6 my-3">
+        <MudText Typo="Typo.subtitle2">
+            <b>
+                @AppName
+            </b>
+        </MudText>
+    </div>
+    @foreach (var section in MenuSections)
+    {
+
+        <div class="ml-6 my-3">
+            <MudText Typo="Typo.caption">
+                <b>
+                    @(section.Title)
+                </b>
+            </MudText>
+        </div>
+
+        @if (section.SectionItems is not null)
+        {
+            @foreach (var sectionItem in section.SectionItems)
+            {
+                @if (sectionItem is { IsParent: true, MenuItems: not null })
+                {
+                    <MudNavGroup Icon="@sectionItem.Icon" Title="@sectionItem.Title" Expanded=true>
+                        @foreach (var menuItem in sectionItem.MenuItems)
+                        {
+
+                            <MudNavLink Href="@(menuItem.Href)" Target="@(menuItem.Target)" Match="NavLinkMatch.All">
+                                <div class="d-flex">
+                                    @(menuItem.Title)
+                                </div>
+                            </MudNavLink>
+                        }
+                    </MudNavGroup>
+                }
+                else
+                {
+                    <MudNavLink Href="@(sectionItem.Href)" Icon="@(sectionItem.Icon)" Target="@(sectionItem.Target)" Match="NavLinkMatch.All">
+                        <div class="d-flex">
+                            @(sectionItem.Title)
+                        </div>
+                    </MudNavLink>
+                }
+            }
+        }
+    }
+</MudNavMenu>
