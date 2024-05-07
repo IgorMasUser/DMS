@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Dms.Core.Domain.Entities;
+﻿using Dms.Core.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 

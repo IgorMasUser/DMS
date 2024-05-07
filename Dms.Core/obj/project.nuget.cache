@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "gzyYn+efTsv6Z+AmCB2bLzO7xUSuqp6wvhLOIVNUbwIpi6K5NjLljRH2WcqelqV8dpngyFQ+1gLh4Z4j85QKKg==",
+  "dgSpecHash": "vcDRrNXa3cTLyBNmMTmSWr3a7PDv1PFz2Mgheio4WimOLMOSSUTknmD87BQtcYibguL0DDI1TVm0XHu9mwVYXg==",
   "success": true,
   "projectFilePath": "E:\\Projects\\Dms\\Dms.Core\\Dms.Core.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Igor Maslov\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.aspnetcore.http\\2.2.2\\microsoft.aspnetcore.http.2.2.2.nupkg.sha512",

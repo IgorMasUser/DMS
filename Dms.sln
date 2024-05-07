@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dms.Api", "Dms.Api\Dms.Api.csproj", "{AC19C764-C7CB-435F-991E-71A87AD0399A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dms.Api", "Dms.Api\Dms.Api.csproj", "{AC19C764-C7CB-435F-991E-71A87AD0399A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dms.Core", "Dms.Core\Dms.Core.csproj", "{A6B575AD-4149-47C1-9A2D-E901EF364707}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dms.Core", "Dms.Core\Dms.Core.csproj", "{A6B575AD-4149-47C1-9A2D-E901EF364707}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

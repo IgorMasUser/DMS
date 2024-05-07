@@ -1,4 +1,6 @@
 ﻿@page "/counter"
+@using AutoMapper;
+@using Dms.Core.Application.Common.DTOs;
 @using Dms.Core.Application.Common.Interfaces;
 @inject ILogger<Counter> logger
 @inject ILogsDbContext dbContext
@@ -12,6 +14,8 @@
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
 @code {
+    [Inject]
+    public IMapper Mapper { get; set; }
     private int currentCount = 0;
 
     private void IncrementCount()
@@ -20,5 +24,7 @@
         logger.LogInformation($"Counter is clicked {currentCount} times");
         var logs = dbContext.Loggers.FirstOrDefault();
         logger.LogInformation($"I get this log from DB:{logs.Message}");
+        var logsDto = Mapper.Map<LogDto>(logs);
+        logger.LogInformation($"I get this LogDto from DB:{logsDto.Message}");
     }
 }

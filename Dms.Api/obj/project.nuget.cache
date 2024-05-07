@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "5AVWE5zTHTsLVDjFrBQ4b8Rd78ozNqzliN3N4+E1ud2sTEwKPkRB8iIesUzC2T7JdQLIquW2vjmNAUxfwL+OgQ==",
+  "dgSpecHash": "npOTIE9lVaQcZROuG8qDkj4Enw0Wb4DXVV+KhF78zRg0qEFlkCfd3W6nvE5Wuhc5oh68Bmn0dzgXz2hoiw3gMQ==",
   "success": true,
   "projectFilePath": "E:\\Projects\\Dms\\Dms.Api\\Dms.Api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Igor Maslov\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.aspnetcore.authorization\\7.0.17\\microsoft.aspnetcore.authorization.7.0.17.nupkg.sha512",

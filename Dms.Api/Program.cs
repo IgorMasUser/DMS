@@ -1,7 +1,9 @@
 using Dms.Api.Extensions;
 using Dms.Api.Services.Navigation;
+using Dms.Core.Application.Common.MapperProfiles;
 using Dms.Core.Infrastructure.Logging;
 using MudBlazor.Services;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,7 @@ builder.Services.AddScoped<IMenuService, MenuService>();
 builder.Services.AddSqlServerDbContext(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddMudServices();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Host.AddSerilog();
 
