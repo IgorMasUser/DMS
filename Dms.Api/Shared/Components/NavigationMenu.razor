@@ -29,13 +29,13 @@
             {
                 @if (sectionItem is { IsParent: true, MenuItems: not null })
                 {
-                    <MudNavGroup Icon="@sectionItem.Icon" Title="@sectionItem.Title" Expanded=@Expanded(sectionItem)>
-                        @foreach (var menuItem in sectionItem.MenuItems)
+                    <MudNavGroup Icon="@sectionItem.Icon" Title="@sectionItem.Title" Expanded=@false>
+                        @foreach (var subMenuItem in sectionItem.MenuItems)
                         {
 
-                            <MudNavLink Href="@(menuItem.Href)" Target="@(menuItem.Target)" Match="NavLinkMatch.All">
+                            <MudNavLink Href="@(subMenuItem.Href)">
                                 <div class="d-flex">
-                                    @(menuItem.Title)
+                                    @(subMenuItem.Title)
                                 </div>
                             </MudNavLink>
                         }
@@ -43,7 +43,7 @@
                 }
                 else
                 {
-                    <MudNavLink Href="@(sectionItem.Href)" Icon="@(sectionItem.Icon)" Target="@(sectionItem.Target)" Match="NavLinkMatch.All">
+                    <MudNavLink Href="@(sectionItem.Href)" Icon="@(sectionItem.Icon)">
                         <div class="d-flex">
                             @(sectionItem.Title)
                         </div>

@@ -47,7 +47,7 @@ public class MenuService : IMenuService
                         new()
                         {
                             Title = "Logs",
-                            Href = "/system/logs",
+                            Href = "/logs",
                             PageStatus = PageStatus.Completed
                         }
                     }
