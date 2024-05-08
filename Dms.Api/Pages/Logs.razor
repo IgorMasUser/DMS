@@ -1,6 +1,8 @@
 ﻿@page "/logs"
+@using Dms.Api.Extensions.Utils;
+@using Dms.Api.Shared.Components.Common
 @using Dms.Core.Application.Common.DTOs;
-@using Dms.Core.Domain.Enums;
+@using Dms.Core.Application.Common.UIModels.Enums;
 @using Microsoft.AspNetCore.Authorization;
 @using Microsoft.AspNetCore.Components.Web
 @using Microsoft.Extensions.Localization;
@@ -19,12 +21,12 @@
              FixedHeader="true"
              FixedFooter="false"
              Virtualize="true"
-             RowsPerPage="@_defaultPageSize"
+             RowsPerPage="@defaultPageSize"
              Height="calc(100vh - 360px)"
              Style="min-height:700px"
              Loading="@_loading"
              CurrentPage="@CurrentPage"
-             Hover="true" @ref="_table">
+             Hover="true" @ref="table">
     <ToolBarContent>
         <div class="d-flex align-start flex-grow-1">
             <div class="d-flex gap-4">
@@ -32,7 +34,24 @@
                 <div class="d-flex flex-column">
                     <MudText Typo="Typo.caption">Logs</MudText>
 
+                    <MudEnumSelect Style="min-width:220px" id="LogList-Period" TEnum="LogListView" ValueChanged="OnChangedListView" Value=filterLogListView Dense="true" Label="List View">
+
+                    </MudEnumSelect>
+                    @if (filterLogListView == LogListView.CustomRange)
+                    {
+                        <MudStack>
+                            <MudDateRangePicker @ref="picker" DateFormat="dd/MM/yyyy" TitleDateFormat="dddd, dd. MMMM" @bind-DateRange=@dateRange>
+                                <PickerActions>
+                                    <MudButton Class="mr-auto align-self-start" OnClick="@(() =>picker.Clear())">Clear</MudButton>
+                                    <MudButton OnClick="@(() => picker.Close(false))">Cancel</MudButton>
+                                    <MudButton Color="Color.Primary" OnClick="@(OnSelectedRangeClickAsync)">Ok</MudButton>
+                                </PickerActions>
+                            </MudDateRangePicker>
+                        </MudStack>
+                    }
                 </div>
+
+
             </div>
             <div class="flex-grow-1" />
 
@@ -41,13 +60,13 @@
                     <MudButton DisableElevation Variant="Variant.Outlined"
                                 Size="Size.Small"
                                 Disabled="@_loading"
+                                OnClick="@(OnRefresh)"
                                 StartIcon="@Icons.Material.Filled.Refresh" IconColor="Color.Surface" Color="Color.Primary"
-                                Style="margin-right: 5px;">
-                     </MudButton>
+                                Style="margin-right: 5px;">Refresh</MudButton>
                  </div>
                  <MudStack Row="true" AlignItems="AlignItems.Stretch">
-                      
-                     <MudTextField T="string" Style="min-width:300px" id="Search" Value="@filterKeyword"  Adornment="Adornment.End"
+                     <MudEnumSelect TEnum="LogLevel?" Placeholder="Log Level" id="LogLevel" Value="@filterLogLevel" Clearable="true" ValueChanged="@(c=>OnChangedLevel(c))" Style="width:160px" FullWidth="true"> </MudEnumSelect>
+                     <MudTextField T="string" Style="min-width:300px" ValueChanged="@(OnSearch)" id="Search" Value="@filterKeyword" Placeholder="Search" Adornment="Adornment.End"
                                    AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium">
                      </MudTextField>
                  </MudStack>
@@ -58,12 +77,12 @@
      </ToolBarContent>
      <Columns>
          <HierarchyColumn T="LogDto" ButtonDisabledFunc="@(x => string.IsNullOrEmpty(x.Message))" />
-         <PropertyColumn CellStyle="width:15%" Property="x => x.TimeStamp" Title="sss">
+         <PropertyColumn CellStyle="width:15%" Property="x => x.TimeStamp" Title=@currentDto.GetMemberDescription(x => x.TimeStamp)>
              <CellTemplate>
-                 <ToLocal DateTime="@context.Item.TimeStamp" Format="dd.mm.yyyy HH:MM:ss"></ToLocal>
+                 @context.Item.TimeStamp
              </CellTemplate>
          </PropertyColumn>
-         <PropertyColumn Sortable="false" CellStyle="width:15%" Property="x => x.Level" Title="sss">
+         <PropertyColumn Sortable="false" CellStyle="width:15%" Property="x => x.Level" Title="@currentDto.GetMemberDescription(x => x.Level)">
              <CellTemplate>
                  @switch (context.Item.Level)
                 {
@@ -87,42 +106,35 @@
                 }
             </CellTemplate>
         </PropertyColumn>
-        <PropertyColumn Sortable="false" CellStyle="width:55%" Property="x => x.Message" Title=/>
+        <PropertyColumn Sortable="false" CellStyle="width:55%" Property="x => x.Message" Title=@currentDto.GetMemberDescription(x => x.Message) />
     </Columns>
     <ChildRowContent>
         <MudCard Elevation="0">
             <MudCardHeader>
                 <CardHeaderContent>
                     <MudText Typo="Typo.body1">
-                        <strong>context.Item.Level</strong>
+                        <strong>@context.Item.Level</strong>
                     </MudText>
                 </CardHeaderContent>
             </MudCardHeader>
             <MudCardContent Class="pt-0">
 
-                <MudText>@_currentDto.Message</MudText>
-                <MudText Typo="Typo.body2">context.Item.Message</MudText>
+                <MudText>@currentDto.GetMemberDescription(x => x.Message)</MudText>
+                <MudText Typo="Typo.body2">@context.Item.Message</MudText>
                 <br />
-               @*  @if (!string.IsNullOrEmpty(context.Item.Exception))
+                @if (!string.IsNullOrEmpty(context.Item.Exception))
                 {
-                    <MudText Color="Color.Error">@_currentDto.GetMemberDescription(x => x.Exception)</MudText>
+                    <MudText Color="Color.Error">@currentDto.GetMemberDescription(x => x.Message)</MudText>
                     <MudText Color="Color.Warning" Typo="Typo.body2">@context.Item.Exception</MudText>
                     <br />
                 }
 
-                <MudText>@_currentDto.GetMemberDescription(x => x.ClientIP)</MudText>
-                <MudText Typo="Typo.body2">@context.Item.ClientIP</MudText>
-                <br />
-
-                <MudText>@_currentDto.GetMemberDescription(x => x.ClientAgent)</MudText>
-                <MudText Typo="Typo.body2">@context.Item.ClientAgent</MudText>
-
                 @if (!string.IsNullOrEmpty(context.Item.CorrelationId))
                 {
                     <br />
-                    <MudText Color="Color.Error">@_currentDto.GetMemberDescription(x => x.CorrelationId)</MudText>
+                    <MudText Color="Color.Error">@currentDto.GetMemberDescription(x => x.CorrelationId)</MudText>
                     <MudText Color="Color.Warning" Typo="Typo.body2">@context.Item.CorrelationId</MudText>
-                } *@
+                }
             </MudCardContent>
         </MudCard>
     </ChildRowContent>

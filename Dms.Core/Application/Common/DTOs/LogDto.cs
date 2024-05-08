@@ -1,15 +1,17 @@
-﻿namespace Dms.Core.Application.Common.DTOs
+﻿using System.ComponentModel;
+
+namespace Dms.Core.Application.Common.DTOs
 {
     public class LogDto
     {
-        public int Id { get; set; }
-        public string? Message { get; set; }
-        public string? MessageTemplate { get; set; }
-        public string Level { get; set; } = default!;
-        public DateTime TimeStamp { get; set; } = DateTime.UtcNow;
-        public string? Exception { get; set; }
-        public string? Properties { get; set; }
-        public string? LogEvent { get; set; }
-        public string? CorrelationId { get; set; }
+        [Description("Id")] public int Id { get; set; }
+        [Description("Message")] public string? Message { get; set; }
+        [Description("Message Template")] public string? MessageTemplate { get; set; }
+        [Description("Level")] public string Level { get; set; } = default!;
+        [Description("Timestamp")] public DateTime TimeStamp { get; set; } = DateTime.UtcNow;
+        [Description("Exception")] public string? Exception { get; set; }
+        [Description("Properties")] public string? Properties { get; set; }
+        [Description("Log Event")] public string? LogEvent { get; set; }
+        [Description("CorrelationId")] public string? CorrelationId { get; set; }
     }
 }

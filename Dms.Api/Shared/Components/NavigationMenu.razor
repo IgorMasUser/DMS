@@ -29,10 +29,9 @@
             {
                 @if (sectionItem is { IsParent: true, MenuItems: not null })
                 {
-                    <MudNavGroup Icon="@sectionItem.Icon" Title="@sectionItem.Title" Expanded=@false>
+                    <MudNavGroup Icon="@sectionItem.Icon" Title="@sectionItem.Title" Expanded=@Expanded(sectionItem)>
                         @foreach (var subMenuItem in sectionItem.MenuItems)
                         {
-
                             <MudNavLink Href="@(subMenuItem.Href)">
                                 <div class="d-flex">
                                     @(subMenuItem.Title)

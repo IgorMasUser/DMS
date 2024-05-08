@@ -1,7 +1,7 @@
 ﻿@using Dms.Api.Shared.Components
 @inherits LayoutComponentBase
 
-<MudThemeProvider />
+<MudThemeProvider Theme=@AppTheme />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
@@ -10,16 +10,30 @@
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
     </MudAppBar>
     <MudDrawer @bind-Open="@_drawerOpen">
-        <NavigationMenu/>
+        <NavigationMenu />
     </MudDrawer>
     <MudMainContent>
-        @Body
+        <MudContainer MaxWidth=MaxWidth.ExtraLarge Class="mb-4 mt-4">
+            <MudPaper Elevation="3" Class="pa-8" Width="100%">
+                <ChildContent>
+                    @Body
+                </ChildContent>
+            </MudPaper>
+        </MudContainer>
     </MudMainContent>
 </MudLayout>
 
 @code {
     bool _drawerOpen = true;
-
+    MudTheme AppTheme = new MudTheme()
+        {
+            Palette = new PaletteLight()
+            {
+                Primary = Colors.Brown.Darken4,
+                Secondary = Colors.Orange.Accent4,
+                AppbarBackground = Colors.Brown.Default
+            }
+        };
     void DrawerToggle()
     {
         _drawerOpen = !_drawerOpen;
