@@ -11,4 +11,11 @@ public partial class NavigationMenu : ComponentBase
 
     private IEnumerable<MenuSectionModel> MenuSections => MenuService.Features;
     private string AppName { get; set; } = "DMS";
+
+    private bool Expanded(MenuSectionItemModel menu)
+    {
+        string href = NavigationManager.Uri[(NavigationManager.BaseUri.Length - 1)..];
+        return menu is { IsParent: true, MenuItems: not null } &&
+               menu.MenuItems.Any(x => !string.IsNullOrEmpty(x.Href) && x.Href.Equals(href));
+    }
 }

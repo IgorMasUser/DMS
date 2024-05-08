@@ -1,16 +1,14 @@
-﻿@* @using Microsoft.AspNetCore.Authorization;
+﻿@page "/system/logs"
+@using Dms.Core.Application.Common.DTOs;
+@using Dms.Core.Domain.Enums;
+@using Microsoft.AspNetCore.Authorization;
 @using Microsoft.AspNetCore.Components.Web
 @using Microsoft.Extensions.Localization;
 @using Microsoft.Extensions.Logging;
 @using Severity = MudBlazor.Severity
-@using Seyfor.CSW.Identity.Shared.Extensions;
-@using Seyfor.CSW.Identity.Shared.Model.LogModels;
-@using Seyfor.CSW.Identity.Shared.Model.DTOs;
-@using Seyfor.CSW.Identity.Shared.Shared;
 
-@inject IStringLocalizer<Logs> L
-@inject IStringLocalizer<SharedResource> SharedLoc
-<PageTitle>@L[Title]</PageTitle>
+
+<PageTitle>@Title</PageTitle>
 <style>
     .mud-table-toolbar {
         height: 120px !important;
@@ -33,23 +31,8 @@
             <div class="d-flex gap-4">
                 <MudIcon Icon="@Icons.Material.Filled.BarChart" Size="Size.Large" />
                 <div class="d-flex flex-column">
-                    <MudText Typo="Typo.caption">@L["Logs"]</MudText>
+                    <MudText Typo="Typo.caption">Logs</MudText>
 
-                    <MudEnumSelect Style="min-width:220px" id="LogList-Period" TEnum="LogListView" ValueChanged="OnChangedListView" Value=filterLogListView Dense="true" Label=@L["List View"]>
-
-                    </MudEnumSelect>
-                    @if (filterLogListView == LogListView.CustomRange)
-                    {
-                        <MudStack>
-                            <MudDateRangePicker @ref="_picker" DateFormat="dd/MM/yyyy" TitleDateFormat="dddd, dd. MMMM" @bind-DateRange="dateRange">
-                                <PickerActions>
-                                    <MudButton Class="mr-auto align-self-start" OnClick="@(() => _picker.Clear())">@L["Clear"]</MudButton>
-                                    <MudButton OnClick="@(() => _picker.Close(false))">@L["Cancel"]</MudButton>
-                                    <MudButton Color="Color.Primary" OnClick="@(OnSelectedRangeClickAsync)">Ok</MudButton>
-                                </PickerActions>
-                            </MudDateRangePicker>
-                        </MudStack>
-                    }
                 </div>
             </div>
             <div class="flex-grow-1" />
@@ -59,15 +42,13 @@
                     <MudButton DisableElevation Variant="Variant.Outlined"
                                 Size="Size.Small"
                                 Disabled="@_loading"
-                                OnClick="@(OnRefresh)"
                                 StartIcon="@Icons.Material.Filled.Refresh" IconColor="Color.Surface" Color="Color.Primary"
                                 Style="margin-right: 5px;">
-                         @SharedLoc["Refresh"]
                      </MudButton>
                  </div>
                  <MudStack Row="true" AlignItems="AlignItems.Stretch">
-                     <MudEnumSelect TEnum="LogLevel?" Placeholder="@L["Log Level"]" id="LogLevel" Value="@filterLogLevel" Clearable="true" ValueChanged="@(c=>OnChangedLevel(c))" Style="width:160px" FullWidth="true"> </MudEnumSelect>
-                     <MudTextField T="string" Style="min-width:300px" ValueChanged="@(OnSearch)" id="Search" Value="@filterKeyword" Placeholder="@SharedLoc["Search"]" Adornment="Adornment.End"
+                      
+                     <MudTextField T="string" Style="min-width:300px" id="Search" Value="@filterKeyword"  Adornment="Adornment.End"
                                    AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium">
                      </MudTextField>
                  </MudStack>
@@ -78,26 +59,26 @@
      </ToolBarContent>
      <Columns>
          <HierarchyColumn T="LogDto" ButtonDisabledFunc="@(x => string.IsNullOrEmpty(x.Message))" />
-         <PropertyColumn CellStyle="width:15%" Property="x => x.TimeStamp" Title="@L[_currentDto.GetMemberDescription(x => x.TimeStamp)]">
+         <PropertyColumn CellStyle="width:15%" Property="x => x.TimeStamp" Title="sss">
              <CellTemplate>
                  <ToLocal DateTime="@context.Item.TimeStamp" Format="dd.mm.yyyy HH:MM:ss"></ToLocal>
              </CellTemplate>
          </PropertyColumn>
-         <PropertyColumn Sortable="false" CellStyle="width:15%" Property="x => x.Level" Title="@L[_currentDto.GetMemberDescription(x => x.Level)]">
+         <PropertyColumn Sortable="false" CellStyle="width:15%" Property="x => x.Level" Title="sss">
              <CellTemplate>
                  @switch (context.Item.Level)
                 {
                     case "Information":
-                        <MudChip Color="Color.Info" Size="Size.Small">@L[context.Item.Level]</MudChip>
+                        <MudChip Color="Color.Info" Size="Size.Small">@context.Item.Level</MudChip>
                         break;
                     case "Warning":
-                        <MudChip Color="Color.Warning" Size="Size.Small">@L[context.Item.Level]</MudChip>
+                        <MudChip Color="Color.Warning" Size="Size.Small">@context.Item.Level</MudChip>
                         break;
                     case "Error":
-                        <MudChip Color="Color.Error" Size="Size.Small">@L[context.Item.Level]</MudChip>
+                        <MudChip Color="Color.Error" Size="Size.Small">@context.Item.Level</MudChip>
                         break;
                     case "Critical":
-                        <MudChip Color="Color.Error" Size="Size.Small">@L[context.Item.Level]</MudChip>
+                        <MudChip Color="Color.Error" Size="Size.Small">@context.Item.Level</MudChip>
                         break;
                     case "Trace":
                     case "Debug":
@@ -107,24 +88,23 @@
                 }
             </CellTemplate>
         </PropertyColumn>
-        <PropertyColumn Sortable="false" CellStyle="width:55%" Property="x => x.Message" Title="@L[_currentDto.GetMemberDescription(x => x.Message)]" />
-        <PropertyColumn CellStyle="width:15%" Sortable="false" Property="x => x.UserName" Title="@L[_currentDto.GetMemberDescription(x => x.UserName)]" />
+        <PropertyColumn Sortable="false" CellStyle="width:55%" Property="x => x.Message" Title=/>
     </Columns>
     <ChildRowContent>
         <MudCard Elevation="0">
             <MudCardHeader>
                 <CardHeaderContent>
                     <MudText Typo="Typo.body1">
-                        <strong>@L[context.Item.Level]</strong>
+                        <strong>context.Item.Level</strong>
                     </MudText>
                 </CardHeaderContent>
             </MudCardHeader>
             <MudCardContent Class="pt-0">
 
-                <MudText>@_currentDto.GetMemberDescription(x => x.Message)</MudText>
-                <MudText Typo="Typo.body2">@context.Item.Message</MudText>
+                <MudText>@_currentDto.Message</MudText>
+                <MudText Typo="Typo.body2">context.Item.Message</MudText>
                 <br />
-                @if (!string.IsNullOrEmpty(context.Item.Exception))
+               @*  @if (!string.IsNullOrEmpty(context.Item.Exception))
                 {
                     <MudText Color="Color.Error">@_currentDto.GetMemberDescription(x => x.Exception)</MudText>
                     <MudText Color="Color.Warning" Typo="Typo.body2">@context.Item.Exception</MudText>
@@ -143,18 +123,18 @@
                     <br />
                     <MudText Color="Color.Error">@_currentDto.GetMemberDescription(x => x.CorrelationId)</MudText>
                     <MudText Color="Color.Warning" Typo="Typo.body2">@context.Item.CorrelationId</MudText>
-                }
+                } *@
             </MudCardContent>
         </MudCard>
     </ChildRowContent>
     <NoRecordsContent>
-        <MudText>@SharedLoc["NoRecords"]</MudText>
+        <MudText>NoRecords</MudText>
     </NoRecordsContent>
     <LoadingContent>
-        <MudText>@SharedLoc["Loading"]</MudText>
+        <MudText>Loading</MudText>
     </LoadingContent>
     <PagerContent>
-        <MudDataGridPager RowsPerPageString="@L["RowsPerPage"]" PageSizeOptions="@(new[] { 10, 15, 30, 50, 100, 500, 1000 })" InfoFormat=@L["{first_item}-{last_item} of {all_items}"] />
+        <MudDataGridPager RowsPerPageString=RowsPerPage PageSizeOptions="@(new[] { 10, 15, 30, 50, 100, 500, 1000 })" />
         <MudDataGrid CurrentPage="@CurrentPage" />
     </PagerContent>
-</MudDataGrid> *@
+</MudDataGrid>
