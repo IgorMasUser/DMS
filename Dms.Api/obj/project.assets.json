@@ -1284,6 +1284,19 @@
           }
         }
       },
+      "MimeMapping/3.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/MimeMapping.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/MimeMapping.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "MudBlazor/6.19.1": {
         "type": "package",
         "dependencies": {
@@ -2016,6 +2029,7 @@
           "AutoMapper": "13.0.1",
           "Microsoft.EntityFrameworkCore": "7.0.18",
           "Microsoft.Extensions.Hosting": "8.0.0",
+          "MimeMapping": "3.0.1",
           "Serilog.AspNetCore": "7.0.0",
           "Serilog.Enrichers.ClientInfo": "2.0.1",
           "Serilog.Extensions.Hosting": "8.0.0",
@@ -3794,6 +3808,22 @@
         "runtimes/win/lib/netcoreapp3.1/Microsoft.Win32.SystemEvents.dll",
         "runtimes/win/lib/netcoreapp3.1/Microsoft.Win32.SystemEvents.xml",
         "useSharedDesignerContext.txt"
+      ]
+    },
+    "MimeMapping/3.0.1": {
+      "sha512": "lhYcUVnWKaqrboAwi05YLCx3wdluM9Sr1Mv5Emhgc8c8yNVvdiSEnQJMdDvgb4grlYTaOmbnhYaezoeateX95w==",
+      "type": "package",
+      "path": "mimemapping/3.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net462/MimeMapping.dll",
+        "lib/net462/MimeMapping.xml",
+        "lib/netstandard2.0/MimeMapping.dll",
+        "lib/netstandard2.0/MimeMapping.xml",
+        "mimemapping.3.0.1.nupkg.sha512",
+        "mimemapping.nuspec"
       ]
     },
     "MudBlazor/6.19.1": {

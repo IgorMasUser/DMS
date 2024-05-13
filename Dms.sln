@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dms.Api", "Dms.Api\Dms.Api.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dms.Core", "Dms.Core\Dms.Core.csproj", "{A6B575AD-4149-47C1-9A2D-E901EF364707}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "jobs", "jobs", "{0529C80F-6118-41B7-B8DA-79262C16F051}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dms.LocalFilesReader", "Dms.LocalFilesReader\Dms.LocalFilesReader.csproj", "{018C74DC-FF9B-4C35-9745-BD885F5766CA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +25,16 @@ Global
 		{A6B575AD-4149-47C1-9A2D-E901EF364707}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6B575AD-4149-47C1-9A2D-E901EF364707}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6B575AD-4149-47C1-9A2D-E901EF364707}.Release|Any CPU.Build.0 = Release|Any CPU
+		{018C74DC-FF9B-4C35-9745-BD885F5766CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{018C74DC-FF9B-4C35-9745-BD885F5766CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{018C74DC-FF9B-4C35-9745-BD885F5766CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{018C74DC-FF9B-4C35-9745-BD885F5766CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{018C74DC-FF9B-4C35-9745-BD885F5766CA} = {0529C80F-6118-41B7-B8DA-79262C16F051}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DB844E2E-E97F-4DA2-BC9A-5B7FB057C4AE}

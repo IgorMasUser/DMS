@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "vcDRrNXa3cTLyBNmMTmSWr3a7PDv1PFz2Mgheio4WimOLMOSSUTknmD87BQtcYibguL0DDI1TVm0XHu9mwVYXg==",
+  "dgSpecHash": "JuHwbFccSskhlJEgXYPssWwxzc9Mfmm0fLITXNWTArSB2t975nDrKM8coCFJk8stHWs/Z0CJOmoCHMJrRKeJwg==",
   "success": true,
   "projectFilePath": "E:\\Projects\\Dms\\Dms.Core\\Dms.Core.csproj",
   "expectedPackageFiles": [
@@ -63,6 +63,7 @@
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\Igor Maslov\\.nuget\\packages\\mimemapping\\3.0.1\\mimemapping.3.0.1.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\serilog\\3.1.1\\serilog.3.1.1.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\serilog.aspnetcore\\7.0.0\\serilog.aspnetcore.7.0.0.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\serilog.enrichers.clientinfo\\2.0.1\\serilog.enrichers.clientinfo.2.0.1.nupkg.sha512",

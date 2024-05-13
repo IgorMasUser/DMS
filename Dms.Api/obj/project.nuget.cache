@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "npOTIE9lVaQcZROuG8qDkj4Enw0Wb4DXVV+KhF78zRg0qEFlkCfd3W6nvE5Wuhc5oh68Bmn0dzgXz2hoiw3gMQ==",
+  "dgSpecHash": "e1i94ryHSLZEgaEGGOAsCn96LLewuaVNAhpYpNtT8GQKcwhGnSbwFpY075jHTqCL6FLt1CHxaMzek7fAHxXItg==",
   "success": true,
   "projectFilePath": "E:\\Projects\\Dms\\Dms.Api\\Dms.Api.csproj",
   "expectedPackageFiles": [
@@ -73,6 +73,7 @@
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\Igor Maslov\\.nuget\\packages\\mimemapping\\3.0.1\\mimemapping.3.0.1.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\mudblazor\\6.19.1\\mudblazor.6.19.1.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\serilog\\3.1.1\\serilog.3.1.1.nupkg.sha512",
     "C:\\Users\\Igor Maslov\\.nuget\\packages\\serilog.aspnetcore\\7.0.0\\serilog.aspnetcore.7.0.0.nupkg.sha512",
