@@ -6,6 +6,8 @@ using Dms.LocalFilesReader;
 using Dms.Core.Application.Common.Interfaces;
 using Dms.Core.Application.Services;
 using Dms.Core.Infrastructure.Configuration;
+using Dms.Core.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 var builder = Host.CreateDefaultBuilder(args);
 
@@ -24,8 +26,14 @@ builder.ConfigureServices((hostContext, services) =>
     services.Configure<FilesOptions>(hostContext.Configuration.GetSection("FilesSettings"));
     ConfigureQuartz(services);
 
+    services.AddDbContext<DmsDbContext>(options =>
+        options.UseSqlServer(hostContext.Configuration.GetConnectionString("DefaultConnection")));
+
+    services.AddScoped<IDmsDbContext>(provider => provider.GetService<DmsDbContext>());
+
     services.AddSingleton<IFileReadingService, FileReadingService>();
     services.AddTransient<IFileProcessingService, FileProcessingService>();
+    services.AddSingleton<IDatabaseService, DatabaseService>();
 });
 
 var host = builder.Build();

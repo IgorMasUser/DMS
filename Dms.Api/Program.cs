@@ -1,10 +1,7 @@
 using Dms.Api.Extensions;
 using Dms.Api.Services.Navigation;
-using Dms.Core.Application.Common.MapperProfiles;
 using Dms.Core.Infrastructure.Logging;
 using MudBlazor.Services;
-using System.Configuration;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 

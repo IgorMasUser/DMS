@@ -127,3 +127,7 @@ E:\Projects\Dms\Dms.Api\obj\Debug\net7.0\Dms.Api.genruntimeconfig.cache
 E:\Projects\Dms\Dms.Api\obj\Debug\net7.0\ref\Dms.Api.dll
 E:\Projects\Dms\Dms.Api\bin\Debug\net7.0\AutoMapper.dll
 E:\Projects\Dms\Dms.Api\bin\Debug\net7.0\MimeMapping.dll
+E:\Projects\Dms\Dms.Api\bin\Debug\net7.0\Humanizer.dll
+E:\Projects\Dms\Dms.Api\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+E:\Projects\Dms\Dms.Api\bin\Debug\net7.0\Mono.TextTemplating.dll
+E:\Projects\Dms\Dms.Api\bin\Debug\net7.0\System.CodeDom.dll
