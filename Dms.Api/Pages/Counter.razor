@@ -2,6 +2,7 @@
 @using AutoMapper;
 @using Dms.Core.Application.Common.DTOs;
 @using Dms.Core.Application.Common.Interfaces;
+@using Microsoft.EntityFrameworkCore;
 @inject ILogger<Counter> logger
 @inject IDmsDbContext dbContext
 
@@ -26,5 +27,8 @@
         logger.LogInformation($"I get this log from DB:{logs.Message}");
         var logsDto = Mapper.Map<LogDto>(logs);
         logger.LogInformation($"I get this LogDto from DB:{logsDto.Message}");
+
+        var files = dbContext.FileAccounters.Include(fa => fa.files).ToList();
+        logger.LogInformation($"I get this LogDto from DB:{files.FirstOrDefault().files.FirstOrDefault().FileName}");
     }
 }
