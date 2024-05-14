@@ -8,6 +8,7 @@ namespace Dms.Core.Application.Common.Interfaces
     {
         DbSet<Logger> Loggers { get; set; }
         DbSet<FileData> FilesData { get; set; }
+        DbSet<FileAccounter> FileAccounters { get; set; }
 
         DatabaseFacade Database { get; }
 

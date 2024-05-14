@@ -19,11 +19,13 @@ namespace Dms.Core.Application.Services
                 throw new ArgumentException("The files list cannot be null or empty", nameof(files));
             }
 
-            foreach (var file in files)
+            var fileAccounter = new FileAccounter
             {
-                dbContext.FilesData.Add(file);
-            }
+                Name = "FilesTracker",
+                files = files
+            };
 
+            dbContext.FileAccounters.Add(fileAccounter);
             await dbContext.SaveChangesAsync(cancellationToken);
         }
     }

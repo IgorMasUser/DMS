@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Dms.Core.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace Dms.Core.Infrastructure.Persistence.Base
@@ -21,6 +22,11 @@ namespace Dms.Core.Infrastructure.Persistence.Base
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<FileAccounter>()
+            .HasMany(fa => fa.files)
+            .WithOne(fd => fd.FileAccounter)
+            .HasForeignKey(fd => fd.FileAccounterId);
 
             if (MigrationsAssemblies == null || !MigrationsAssemblies.Any())
             {

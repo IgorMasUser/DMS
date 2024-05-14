@@ -11,5 +11,7 @@ namespace Dms.Core.Domain.Entities
         public string? ContentType { get; set; }
         public byte[]? Data { get; set; }
         public DateTime? ReadAt { get; set; } = DateTime.Now;
+        public int? FileAccounterId { get; set; }
+        public FileAccounter? FileAccounter { get; set; }
     }
 }
