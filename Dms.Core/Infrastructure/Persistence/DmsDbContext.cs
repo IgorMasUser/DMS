@@ -6,14 +6,15 @@ using System.Reflection;
 
 namespace Dms.Core.Infrastructure.Persistence
 {
-    public class LogsDbContext : BaseDbContext, ILogsDbContext
+    public class DmsDbContext : BaseDbContext, IDmsDbContext
     {
-        public LogsDbContext(DbContextOptions options) : base(options)
+        public DmsDbContext(DbContextOptions options) : base(options)
         {
         }
 
         public DbSet<Logger> Loggers { get; set; }
+        public DbSet<FileData> FilesData { get; set; }
 
-        protected override IEnumerable<Assembly> MigrationsAssemblies => new[] { typeof(LogsDbContext).Assembly };
+        protected override IEnumerable<Assembly> MigrationsAssemblies => new[] { typeof(DmsDbContext).Assembly };
     }
 }

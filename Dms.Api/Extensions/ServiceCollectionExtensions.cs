@@ -13,7 +13,7 @@ namespace Dms.Api.Extensions
 
             if (string.IsNullOrWhiteSpace(connString)) throw new ArgumentNullException(nameof(connString));
 
-            services.AddDbContextFactory<LogsDbContext>(options =>
+            services.AddDbContextFactory<DmsDbContext>(options =>
             {
                 options.UseSqlServer(connString, sqlOptions =>
                 {
@@ -21,7 +21,7 @@ namespace Dms.Api.Extensions
                 });
             });
 
-            services.AddScoped<ILogsDbContext>(provider => provider.GetRequiredService<IDbContextFactory<LogsDbContext>>().CreateDbContext());
+            services.AddScoped<IDmsDbContext>(provider => provider.GetRequiredService<IDbContextFactory<DmsDbContext>>().CreateDbContext());
 
             return services;
         }

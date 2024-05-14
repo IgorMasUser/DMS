@@ -28,7 +28,7 @@ namespace Dms.Api.Pages
         public int CurrentPage { get; set; }
 
         [Inject]
-        private ILogsDbContext dbContext { get; set; }
+        private IDmsDbContext dbContext { get; set; }
 
         [Inject]
         public IMapper Mapper { get; set; }

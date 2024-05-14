@@ -4,9 +4,10 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Dms.Core.Application.Common.Interfaces
 {
-    public interface ILogsDbContext
+    public interface IDmsDbContext
     {
         DbSet<Logger> Loggers { get; set; }
+        DbSet<FileData> FilesData { get; set; }
 
         DatabaseFacade Database { get; }
 
