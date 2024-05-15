@@ -53,6 +53,11 @@ namespace Dms.Core.Infrastructure.Persistence.Migrations
                     b.Property<byte[]>("Data")
                         .HasColumnType("varbinary(max)");
 
+                    b.Property<string>("DocumentNumber")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
+
                     b.Property<int?>("FileAccounterId")
                         .HasColumnType("int");
 

@@ -31,9 +31,10 @@ builder.ConfigureServices((hostContext, services) =>
 
     services.AddScoped<IDmsDbContext>(provider => provider.GetService<DmsDbContext>());
 
-    services.AddSingleton<IFileReadingService, FileReadingService>();
+    services.AddTransient<IFileReadingService, FileReadingService>();
     services.AddTransient<IFileProcessingService, FileProcessingService>();
     services.AddSingleton<IDatabaseService, DatabaseService>();
+    services.AddTransient<IDocumentNumberService, DocumentNumberService>();
 });
 
 var host = builder.Build();
