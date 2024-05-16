@@ -15,6 +15,7 @@ namespace Dms.Core.Infrastructure.Persistence
         public DbSet<Logger> Loggers { get; set; }
         public DbSet<FileData> FilesData { get; set; }
         public DbSet<FileAccounter> FileAccounters { get; set; }
+        public DbSet<DocumentHistory> DocumentHistory { get; set; }
 
         protected override IEnumerable<Assembly> MigrationsAssemblies => new[] { typeof(DmsDbContext).Assembly };
     }

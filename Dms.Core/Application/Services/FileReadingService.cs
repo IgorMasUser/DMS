@@ -1,4 +1,5 @@
 ﻿using Dms.Core.Application.Common.Interfaces;
+using Dms.Core.Application.Common.UIModels.Enums;
 using Dms.Core.Domain.Entities;
 using Dms.Core.Infrastructure.Configuration;
 using Microsoft.Extensions.Logging;
@@ -12,7 +13,9 @@ namespace Dms.Core.Application.Services
         private readonly ILogger<FileReadingService> logger;
         private readonly IDocumentNumberService numberService;
 
-        public FileReadingService(IOptions<FilesOptions> filesOptions, ILogger<FileReadingService> logger, IDocumentNumberService numberService)
+        public FileReadingService(IOptions<FilesOptions> filesOptions,
+            ILogger<FileReadingService> logger,
+            IDocumentNumberService numberService)
         {
             this.filesOptions = filesOptions ?? throw new ArgumentNullException(nameof(filesOptions));
             this.logger = logger;

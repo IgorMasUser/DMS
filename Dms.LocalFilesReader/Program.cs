@@ -8,6 +8,7 @@ using Dms.Core.Application.Services;
 using Dms.Core.Infrastructure.Configuration;
 using Dms.Core.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
+using Dms.Core.Application.Common.MapperProfiles;
 
 var builder = Host.CreateDefaultBuilder(args);
 
@@ -35,6 +36,8 @@ builder.ConfigureServices((hostContext, services) =>
     services.AddTransient<IFileProcessingService, FileProcessingService>();
     services.AddSingleton<IDatabaseService, DatabaseService>();
     services.AddTransient<IDocumentNumberService, DocumentNumberService>();
+    services.AddTransient<IDocumentHistoryService, DocumentHistoryService>();
+    services.AddAutoMapper(typeof(DocumentHistoryMappingProfile).Assembly);
 });
 
 var host = builder.Build();

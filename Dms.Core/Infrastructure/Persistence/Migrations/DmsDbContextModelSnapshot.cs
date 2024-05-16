@@ -22,6 +22,41 @@ namespace Dms.Core.Infrastructure.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Dms.Core.Domain.Entities.DocumentHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Details")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DocumentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Event")
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
+
+                    b.Property<string>("PerformedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DocumentId");
+
+                    b.ToTable("DocumentHistory");
+                });
+
             modelBuilder.Entity("Dms.Core.Domain.Entities.FileAccounter", b =>
                 {
                     b.Property<int>("Id")
@@ -79,6 +114,17 @@ namespace Dms.Core.Infrastructure.Persistence.Migrations
                     b.ToTable("FilesData");
                 });
 
+                      modelBuilder.Entity("Dms.Core.Domain.Entities.DocumentHistory", b =>
+                {
+                    b.HasOne("Dms.Core.Domain.Entities.FileData", "Document")
+                        .WithMany("DocumentHistory")
+                        .HasForeignKey("DocumentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Document");
+                });
+
             modelBuilder.Entity("Dms.Core.Domain.Entities.FileData", b =>
                 {
                     b.HasOne("Dms.Core.Domain.Entities.FileAccounter", "FileAccounter")
@@ -91,6 +137,11 @@ namespace Dms.Core.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("Dms.Core.Domain.Entities.FileAccounter", b =>
                 {
                     b.Navigation("files");
+                });
+
+            modelBuilder.Entity("Dms.Core.Domain.Entities.FileData", b =>
+                {
+                    b.Navigation("DocumentHistory");
                 });
 #pragma warning restore 612, 618
         }

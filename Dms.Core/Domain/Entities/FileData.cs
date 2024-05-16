@@ -16,5 +16,6 @@ namespace Dms.Core.Domain.Entities
         [Required]
         [MaxLength(128)]
         public string DocumentNumber { get; set; }
+        public ICollection<DocumentHistory> DocumentHistory { get; set; }
     }
 }

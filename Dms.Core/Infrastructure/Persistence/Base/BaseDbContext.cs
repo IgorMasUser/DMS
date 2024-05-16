@@ -28,6 +28,11 @@ namespace Dms.Core.Infrastructure.Persistence.Base
             .WithOne(fd => fd.FileAccounter)
             .HasForeignKey(fd => fd.FileAccounterId);
 
+            modelBuilder.Entity<DocumentHistory>()
+             .HasOne(dh => dh.Document)
+             .WithMany(fd => fd.DocumentHistory)
+             .HasForeignKey(dh => dh.DocumentId);
+
             if (MigrationsAssemblies == null || !MigrationsAssemblies.Any())
             {
                 return;
