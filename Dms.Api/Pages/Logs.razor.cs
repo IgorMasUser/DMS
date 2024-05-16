@@ -12,13 +12,12 @@ namespace Dms.Api.Pages
 {
     public partial class Logs
     {
-
         private string Title { get; set; } = "Logs";
         private MudDataGrid<LogDto> table = default!;
         private readonly LogDto currentDto = new();
         private int defaultPageSize = 15;
         private List<LogDto> logDtos = null;
-        private bool _selectedDefaultSortOrder = false;
+        private bool selectedDefaultSortOrder = false;
         private int totalRecords;
         private MudDateRangePicker picker;
         private LogsQueryParams queryParams = new();
@@ -36,7 +35,7 @@ namespace Dms.Api.Pages
         [Inject]
         ILogger<Logs> Logger { get; set; }
 
-        private bool _loading;
+        private bool loading;
 
         private LogLevel? filterLogLevel;
         private LogListView filterLogListView = LogListView.All;
@@ -51,16 +50,16 @@ namespace Dms.Api.Pages
         {
             try
             {
-                _loading = true;
+                loading = true;
 
                 var sort = state.SortDefinitions.FirstOrDefault();
                 var sortDescending = sort is not null ? sort.Descending : false;
                 SetUpDataLoading(state);
 
-                if (_selectedDefaultSortOrder)
+                if (selectedDefaultSortOrder)
                 {
                     queryParams.sortByDescending = false;
-                    _selectedDefaultSortOrder = false;
+                    selectedDefaultSortOrder = false;
                 }
                 else
                 {
@@ -81,7 +80,7 @@ namespace Dms.Api.Pages
             }
             finally
             {
-                _loading = false;
+                loading = false;
             }
         }
 
@@ -144,7 +143,7 @@ namespace Dms.Api.Pages
             queryParams.Level = default;
             queryParams.SearchedText = default;
             queryParams.logListView = default;
-            _selectedDefaultSortOrder = true;
+            selectedDefaultSortOrder = true;
             filterKeyword = default;
             filterLogListView = LogListView.All;
             queryParams.skipLogs = default;
@@ -208,7 +207,11 @@ namespace Dms.Api.Pages
                     query = query.OrderBy(l => l.TimeStamp);
                 }
 
-                var logs = await query.ToListAsync();
+                var logs = await query
+                    .Skip(queryParams.skipLogs)
+                    .Take(queryParams.takeLogs)
+                    .ToListAsync();
+
                 return logs;
             }
             catch (Exception ex)

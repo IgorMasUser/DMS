@@ -24,7 +24,7 @@
              RowsPerPage="@defaultPageSize"
              Height="calc(100vh - 360px)"
              Style="min-height:700px"
-             Loading="@_loading"
+             Loading="@loading"
              CurrentPage="@CurrentPage"
              Hover="true" @ref="table">
     <ToolBarContent>
@@ -59,7 +59,7 @@
                 <div class="d-flex">
                     <MudButton DisableElevation Variant="Variant.Outlined"
                                 Size="Size.Small"
-                                Disabled="@_loading"
+                                Disabled="@loading"
                                 OnClick="@(OnRefresh)"
                                 StartIcon="@Icons.Material.Filled.Refresh" IconColor="Color.Surface" Color="Color.Primary"
                                 Style="margin-right: 5px;">Refresh</MudButton>
