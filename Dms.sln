@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dms.Core", "Dms.Core\Dms.Co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "jobs", "jobs", "{0529C80F-6118-41B7-B8DA-79262C16F051}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dms.LocalFilesReader", "Dms.LocalFilesReader\Dms.LocalFilesReader.csproj", "{018C74DC-FF9B-4C35-9745-BD885F5766CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dms.LocalFilesReader", "Dms.LocalFilesReader\Dms.LocalFilesReader.csproj", "{018C74DC-FF9B-4C35-9745-BD885F5766CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

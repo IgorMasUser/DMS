@@ -41,11 +41,6 @@ namespace Dms.Api.Pages
         private LogListView filterLogListView = LogListView.All;
         private string? filterKeyword;
 
-        protected override void OnInitialized()
-        {
-            Title = "Logs";
-        }
-
         private async Task<GridData<LogDto>> ServerReload(GridState<LogDto> state)
         {
             try

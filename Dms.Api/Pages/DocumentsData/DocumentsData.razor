@@ -1,0 +1,62 @@
+﻿@page "/documentsdata/all"
+@using Dms.Core.Application.Common.DTOs;
+@using Microsoft.AspNetCore.Authorization;
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.Extensions.Localization;
+@using Microsoft.Extensions.Logging;
+@using Severity = MudBlazor.Severity;
+
+<PageTitle>@Title</PageTitle>
+
+<MudDataGrid ServerData="@(ServerReload)"
+             T="FileDataDto"
+             FixedFooter="true"
+             ReadOnly="true"
+             EditTrigger="DataGridEditTrigger.OnRowClick"
+             Height="calc(100vh - 300px)"
+             Loading="@_loading"
+             Hover="true" @ref="_table"
+             RowClick="@((args) => CheckMetaData(args.Item.Id))">
+    <ToolBarContent>
+        <div class="d-flex align-end justify-end flex-grow-1">
+
+            <div class="d-flex align-center gap-4 align">
+                <MudIcon Icon="@Icons.Material.Filled.DocumentScanner" Size="Size.Large" />
+                <MudText Typo="Typo.subtitle1">Documents metadata</MudText>
+            </div>
+
+            <div class="flex-grow-1" />
+
+            <div class="d-flex flex-column justify-end">
+                <MudStack Row="true" AlignItems="AlignItems.Stretch">
+                    <MudTextField T="string" ValueChanged="@(s=>OnSearch(s))" Value="@keyword" Placeholder=Search Adornment="Adornment.End" Style="width:260px" FullWidth="true"
+                                  AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Small"></MudTextField>
+                </MudStack>
+            </div>
+        </div>
+    </ToolBarContent>
+    <Columns>
+        <PropertyColumn CellStyle="width:10%" Property="x => x.Id" Title=Id />
+        <PropertyColumn Sortable="false" CellStyle="width:70%" Property="x => x.DocumentNumber" Title="Document number">
+            <EditTemplate>
+                <MudTextField For="@(() => context.Item.DocumentNumber)"
+                              T="string" @bind-Value="@metadata.DocumentNumber" Variant="Variant.Text"></MudTextField>
+            </EditTemplate>
+        </PropertyColumn>
+    </Columns>
+    <NoRecordsContent>
+        <MudText>NoRecords</MudText>
+    </NoRecordsContent>
+    <LoadingContent>
+        <MudText>Loading</MudText>
+    </LoadingContent>
+    <PagerContent>
+        <MudDataGridPager RowsPerPageString=RowsPerPage PageSizeOptions="@(new int[]{10,15,30})" />
+    </PagerContent>
+</MudDataGrid>
+
+<style>
+    .mud-table-toolbar {
+        height: 120px !important;
+    }
+</style>

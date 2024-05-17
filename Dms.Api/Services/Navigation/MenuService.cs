@@ -26,7 +26,7 @@ public class MenuService : IMenuService
                         new()
                         {
                             Title = "Document service",
-                            Href = "/pages/documents",
+                            Href = "documentsdata/all",
                             PageStatus = PageStatus.Completed
                         }
                     }
