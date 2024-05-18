@@ -3,7 +3,6 @@ using Dms.Core.Application.Common.DTOs;
 using Dms.Core.Application.Common.Interfaces;
 using Dms.Core.Domain.Entities;
 using Microsoft.AspNetCore.Components;
-using Microsoft.EntityFrameworkCore;
 using MudBlazor;
 
 namespace Dms.Api.Pages.DocumentsData
@@ -12,10 +11,10 @@ namespace Dms.Api.Pages.DocumentsData
     {
         private string Title { get; set; } = "Documents data";
 
-        private MudDataGrid<FileDataDto> _table = default!;
+        private MudDataGrid<FileDataDto> table = default!;
         private FileData metadata = new();
         private List<FileDataDto> filesDataDto = new List<FileDataDto>();
-        private bool _loading;
+        private bool loading;
         protected string? keyword;
         private int totalRecords;
 
@@ -31,11 +30,7 @@ namespace Dms.Api.Pages.DocumentsData
         {
             try
             {
-                _loading = true;
-
-                //var sort = state.SortDefinitions.FirstOrDefault();
-                //var sortDescending = sort is not null ? sort.Descending : false;
-
+                loading = true;
 
                 var documents = dbContext.FilesData;
 
@@ -57,19 +52,19 @@ namespace Dms.Api.Pages.DocumentsData
             }
             finally
             {
-                _loading = false;
+                loading = false;
             }
         }
         private void CheckMetaData(int Id)
         {
-            //var navigationUrl = $"/{Core.Constants.Pages.DocumentDetail}/{Id}?source=/metadata/all";
-            //NavigationManager.NavigateTo(navigationUrl);
+            var navigationUrl = $"/{Core.Application.Common.Constants.Pages.DocumentDetails}/{Id}?source=/documentsdata/all";
+            NavigationManager.NavigateTo(navigationUrl);
         }
 
         protected async Task OnSearch(string text)
         {
             keyword = text;
-            await _table.ReloadServerData();
+            await table.ReloadServerData();
         }
     }
 }

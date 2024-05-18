@@ -14,8 +14,8 @@
              ReadOnly="true"
              EditTrigger="DataGridEditTrigger.OnRowClick"
              Height="calc(100vh - 300px)"
-             Loading="@_loading"
-             Hover="true" @ref="_table"
+             Loading="@loading"
+             Hover="true" @ref="table"
              RowClick="@((args) => CheckMetaData(args.Item.Id))">
     <ToolBarContent>
         <div class="d-flex align-end justify-end flex-grow-1">

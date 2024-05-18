@@ -24,8 +24,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/Projects/Dms/Dms.Api/Pages/DocumentsData/DocumentDetails.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRG9jdW1lbnRzRGF0YVxEb2N1bWVudERldGFpbHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/Projects/Dms/Dms.Api/Pages/DocumentsData/DocumentsData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRG9jdW1lbnRzRGF0YVxEb2N1bWVudHNEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/Projects/Dms/Dms.Api/Pages/DocumentsData/Parts/DocumentDetailsHeader.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRG9jdW1lbnRzRGF0YVxQYXJ0c1xEb2N1bWVudERldGFpbHNIZWFkZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/Projects/Dms/Dms.Api/Pages/Index.razor]

@@ -63,6 +63,7 @@ namespace Dms.Api.Pages
 
                 var logs = await GetLogsData(queryParams);
                 logDtos = Mapper.Map<List<LogDto>>(logs);
+                totalRecords = logs.Count();
 
                 if (logDtos != null)
                 {

@@ -1,0 +1,59 @@
+﻿<MudPaper Elevation=4 Class="my-2 mt-0">
+
+    <div style="display: flex; gap: 10%;">
+        <MudGrid>
+            <MudItem xs="1" lg="9">
+                <table style="border: none; margin:10px;border-spacing: 10px;width:100%">
+                    <colgroup>
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                        <col style="width: 25%;">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td style="width:25%">
+                                <MudStack Row AlignItems="AlignItems.Center">
+                                     <MudIcon Color=Color.Primary Size="Size.Small" Icon="@Icons.Material.Outlined.House" />
+                                     <MudText Typo="Typo.subtitle1">"CompanyBranch"</MudText>
+                                 </MudStack>
+                             </td>
+                             <td style="width:25%">
+                                 <MudText Class="mud-text-secondary" Typo="Typo.subtitle1">@Dto.FileName</MudText>
+                             </td>
+                             <td style="width:25%">
+                                 <MudStack Row AlignItems="AlignItems.Center">
+                                     <MudIcon Color=Color.Primary Size="Size.Small" Icon="@Icons.Material.Outlined.CorporateFare" />
+                                     <MudText Typo="Typo.subtitle1">Company</MudText>
+                                 </MudStack>
+                             </td>
+                             <td style="width:25%">
+                                 <MudText Class="mud-text-secondary" Typo="Typo.subtitle1">@Dto.FileName</MudText>
+                             </td>
+                         </tr>
+                         <tr>
+                             <td>
+                                 <MudStack Row AlignItems="AlignItems.Center">
+                                     <MudIcon Color=Color.Primary Size="Size.Small" Icon="@Icons.Material.Outlined.ReceiptLong" />
+                                     <MudText Typo="Typo.subtitle1">Document type</MudText>
+                                 </MudStack>
+                             </td>
+                             <td>
+                                 <strong>
+                                     <MudStack Row AlignItems="AlignItems.Center">
+                                         <MudIcon Color=Color.Primary Size="Size.Small" Icon="@Icons.Material.Outlined.TaskAlt" />
+                                         <MudText Typo="Typo.subtitle1">State</MudText>
+                                     </MudStack>
+                                 </strong>
+                             </td>
+                             <td>
+                                 <MudChip Icon="@Icons.Material.Filled.Check" Color="Color.Primary" Size="Size.Small">@Dto.FileAccounter.Name ?? string.Empty]</MudChip>
+                             </td>
+                         </tr>
+
+                     </tbody>
+                 </table>
+             </MudItem>
+        </MudGrid>
+    </div>
+</MudPaper>
