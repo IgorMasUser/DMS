@@ -12,7 +12,7 @@ namespace Dms.Core.Domain.Entities
         public byte[]? Data { get; set; }
         public DateTime? ReadAt { get; set; } = DateTime.Now;
         public int? FileAccounterId { get; set; }
-        public FileAccounter? FileAccounter { get; set; }
+        public FileAccounter? FileAccounter { get; set; } = new();
         [Required]
         [MaxLength(128)]
         public string DocumentNumber { get; set; }

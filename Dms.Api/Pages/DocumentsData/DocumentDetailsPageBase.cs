@@ -15,8 +15,8 @@ namespace Dms.Api.Pages.DocumentsData
 
         [Inject] public IMapper Mapper { get; set; }
         protected FileDataDto Dto = new();
-        protected MudTabs _tabs;
-        protected MudTabPanel _accountingTab;
+        protected MudTabs tabs;
+        protected MudTabPanel accountingTab;
         protected bool ReadOnly => false;
         protected bool formInvalid;
         protected bool accountingFormInvalid;

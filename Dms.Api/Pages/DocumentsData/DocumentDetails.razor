@@ -15,34 +15,12 @@
 }
 else
 {
+    <PageTitle>@Dto.DocumentNumber</PageTitle>
+    <MudButtonGroup Class="shirt-toolbar" Size=Size.Large Color="Color.Primary" Variant="Variant.Filled">
+    <MudButton IconColor=Color.Success StartIcon="@Icons.Material.Filled.Save">Save</MudButton>
+    <MudButton IconColor=Color.Secondary StartIcon="@Icons.Material.Filled.Cancel">Cancel</MudButton>
 
-        <PageTitle>@Dto.DocumentNumber</PageTitle>
+    </MudButtonGroup>
 
-
-        <MudButtonGroup Class="shirt-toolbar" Size=Size.Large Color="Color.Primary" Variant="Variant.Filled">
-            @* <MudButton Disabled=ReadOnly OnClick=OnFormSave StartIcon="@Icons.Material.Filled.Save">Save</MudButton>
-                <MudButton OnClick=OnFormClose StartIcon="@Icons.Material.Filled.Close" IconColor="Color.Secondary">@ConstantString.Close</MudButton> *@
-
-                <MudButton IconColor=Color.Success StartIcon="@Icons.Material.Filled.TaskAlt">Schválit</MudButton>
-                <MudButton IconColor=Color.Secondary StartIcon="@Icons.Material.Filled.SettingsBackupRestore">Zamítnout</MudButton>
-                <MudButton IconColor=Color.Secondary StartIcon="@Icons.Material.Filled.Cancel">Stornovat</MudButton>
-
-@*                 <MudMenu Icon="@Icons.Material.Filled.MoreVert">
-                    <MudMenuItem OnClick=ReadyForMining>__Set Manual mining readiness</MudMenuItem>
-                </MudMenu> *@
-            </MudButtonGroup>
-
-        <DocumentDetailsHeader Dto="Dto" />
-
-        @* <MudTabs Elevation="4" Rounded="true" KeepPanelsAlive ApplyEffectsToContainer="true" PanelClass="pa-6" @ref="tabs">
-             <MudTabPanel Icon="@Icons.Material.Filled.TableRows" Text=Document metadata BadgeDot=formInvalid BadgeColor=Color.Error>
-                 <DocumentDetailForm Dto="Dto" @ref=@form ReadOnly=ReadOnly />
-             </MudTabPanel>
-             <MudTabPanel Icon="@Icons.Material.Filled.AttachFile" Text="Documents">
-                 <DocumentDetailFiles Dto=Dto />
-             </MudTabPanel>
-             <MudTabPanel Icon="@Icons.Material.Filled.History" Text="History of processing">
-                 <DocumentDetailHistory Dto="Dto" />
-             </MudTabPanel>
-         </MudTabs> *@
+    <DocumentDetailsBody Dto="Dto" />
 }

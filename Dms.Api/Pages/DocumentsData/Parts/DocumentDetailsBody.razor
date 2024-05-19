@@ -15,7 +15,7 @@
                             <td style="width:25%">
                                 <MudStack Row AlignItems="AlignItems.Center">
                                      <MudIcon Color=Color.Primary Size="Size.Small" Icon="@Icons.Material.Outlined.House" />
-                                     <MudText Typo="Typo.subtitle1">"CompanyBranch"</MudText>
+                                     <MudText Typo="Typo.subtitle1">CompanyBranch</MudText>
                                  </MudStack>
                              </td>
                              <td style="width:25%">
@@ -47,7 +47,7 @@
                                  </strong>
                              </td>
                              <td>
-                                 <MudChip Icon="@Icons.Material.Filled.Check" Color="Color.Primary" Size="Size.Small">@Dto.FileAccounter.Name ?? string.Empty]</MudChip>
+                                 <MudChip Icon="@Icons.Material.Filled.Check" Color="Color.Primary" Size="Size.Small">@(Dto.FileAccounter?.Name ?? string.Empty)</MudChip>
                              </td>
                          </tr>
 
