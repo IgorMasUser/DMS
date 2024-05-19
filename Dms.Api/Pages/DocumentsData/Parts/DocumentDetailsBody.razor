@@ -15,7 +15,18 @@
                             <td style="width:25%">
                                 <MudStack Row AlignItems="AlignItems.Center">
                                      <MudIcon Color=Color.Primary Size="Size.Small" Icon="@Icons.Material.Outlined.House" />
-                                     <MudText Typo="Typo.subtitle1">CompanyBranch</MudText>
+                                     <MudText Typo="Typo.subtitle1">Document numnber</MudText>
+                                 </MudStack>
+                             </td>
+                             <td style="width:25%">
+                                 <MudText Class="mud-text-secondary" Typo="Typo.subtitle1">@Dto.DocumentNumber</MudText>
+                             </td>
+                         </tr>
+                        <tr>
+                            <td style="width:25%">
+                                <MudStack Row AlignItems="AlignItems.Center">
+                                     <MudIcon Color=Color.Primary Size="Size.Small" Icon="@Icons.Material.Outlined.House" />
+                                     <MudText Typo="Typo.subtitle1">File Name</MudText>
                                  </MudStack>
                              </td>
                              <td style="width:25%">
@@ -24,36 +35,38 @@
                              <td style="width:25%">
                                  <MudStack Row AlignItems="AlignItems.Center">
                                      <MudIcon Color=Color.Primary Size="Size.Small" Icon="@Icons.Material.Outlined.CorporateFare" />
-                                     <MudText Typo="Typo.subtitle1">Company</MudText>
+                                     <MudText Typo="Typo.subtitle1">File Size</MudText>
                                  </MudStack>
                              </td>
                              <td style="width:25%">
-                                 <MudText Class="mud-text-secondary" Typo="Typo.subtitle1">@Dto.FileName</MudText>
+                                 <MudText Class="mud-text-secondary" Typo="Typo.subtitle1">@(Dto.FileSize + " B")</MudText>
                              </td>
                          </tr>
                          <tr>
-                             <td>
+                             <td style="width:25%">
                                  <MudStack Row AlignItems="AlignItems.Center">
-                                     <MudIcon Color=Color.Primary Size="Size.Small" Icon="@Icons.Material.Outlined.ReceiptLong" />
-                                     <MudText Typo="Typo.subtitle1">Document type</MudText>
+                                     <MudIcon Color=Color.Primary Size="Size.Small" Icon="@Icons.Material.Outlined.House" />
+                                     <MudText Typo="Typo.subtitle1">File Accounter Name</MudText>
                                  </MudStack>
                              </td>
-                             <td>
-                                 <strong>
-                                     <MudStack Row AlignItems="AlignItems.Center">
-                                         <MudIcon Color=Color.Primary Size="Size.Small" Icon="@Icons.Material.Outlined.TaskAlt" />
-                                         <MudText Typo="Typo.subtitle1">State</MudText>
-                                     </MudStack>
-                                 </strong>
+                             <td style="width:25%">
+                                 <MudText Class="mud-text-secondary" Typo="Typo.subtitle1">@(Dto.FileAccounter?.Name ?? string.Empty)</MudText>
+                                </td>
+
+                                <td style="width:25%">
+                                    <MudStack Row AlignItems="AlignItems.Center">
+                                     <MudIcon Color=Color.Primary Size="Size.Small" Icon="@Icons.Material.Outlined.House" />
+                                     <MudText Typo="Typo.subtitle1">Created At</MudText>
+                                 </MudStack>
                              </td>
-                             <td>
-                                 <MudChip Icon="@Icons.Material.Filled.Check" Color="Color.Primary" Size="Size.Small">@(Dto.FileAccounter?.Name ?? string.Empty)</MudChip>
+                             <td style="width:25%">
+                                 <MudText Class="mud-text-secondary" Typo="Typo.subtitle1">@Dto.ReadAt</MudText>
                              </td>
                          </tr>
 
                      </tbody>
                  </table>
              </MudItem>
-        </MudGrid>
-    </div>
-</MudPaper>
+         </MudGrid>
+     </div>
+ </MudPaper>

@@ -3,6 +3,7 @@ using Dms.Core.Application.Common.DTOs;
 using Dms.Core.Application.Common.Interfaces;
 using Dms.Core.Domain.Entities;
 using Microsoft.AspNetCore.Components;
+using Microsoft.EntityFrameworkCore;
 using MudBlazor;
 
 namespace Dms.Api.Pages.DocumentsData
@@ -32,7 +33,7 @@ namespace Dms.Api.Pages.DocumentsData
             {
                 loading = true;
 
-                var documents = dbContext.FilesData;
+                var documents = dbContext.FilesData.Include(f=>f.FileAccounter);
 
                 if (documents != null)
                 {
