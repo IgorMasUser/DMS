@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3/lkOaScScNnOUR3a+VrdkCoxKirGpE3DF9JW4oZg1Y=",
+  "Hash": "Mqsp8JCGyKFQK5BiPuFEu9jpSjsxMFb3KB9DsnYERIA=",
   "Source": "Dms.Api",
   "BasePath": "_content/Dms.Api",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.png"
+    },
+    {
+      "Identity": "E:\\Projects\\Dms\\Dms.Api\\wwwroot\\js\\utils.js",
+      "SourceId": "Dms.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Projects\\Dms\\Dms.Api\\wwwroot\\",
+      "BasePath": "_content/Dms.Api",
+      "RelativePath": "js/utils.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\utils.js"
     }
   ]
 }
