@@ -1,9 +1,31 @@
 ﻿@page "/"
+@using Dms.Core.Application.Common.Interfaces;
+@inject IFilesStatisticService FilesStatisticService
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
+<div>
+    <MudText Typo="Typo.h6" Align="Align.Center" Class="mb-3">Document Storage Frequency</MudText>
+    <MudChart ChartType="ChartType.Line" ChartSeries="@Series" @bind-SelectedIndex="index" XAxisLabels="@XAxisLabels" Width="100%" Height="350px" ChartOptions="@Options" />
+    </div>
 
-Welcome to your new app.
+    @code {
+    private int index = -1;
+    public ChartOptions Options = new ChartOptions();
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+    public List<ChartSeries> Series = new List<ChartSeries>();
+    public string[] XAxisLabels = new string[] { };
+
+    protected override async Task OnInitializedAsync()
+    {
+        var data = await FilesStatisticService.GetFilesPerDayAsync();
+
+        Series.Add(new ChartSeries
+            {
+                Name = "Files Uploaded",
+                Data = data.Select(d => (double)d.Count).ToArray()
+            });
+
+        XAxisLabels = data.Select(d => d.Date.ToString("MM/dd/yyyy")).ToArray();
+    }
+}
