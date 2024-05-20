@@ -3,6 +3,7 @@ using Dms.Core.Application.Common.DTOs;
 using Dms.Core.Application.Common.Interfaces;
 using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.JSInterop;
 using MudBlazor;
 
 namespace Dms.Api.Pages.DocumentsData
@@ -15,11 +16,9 @@ namespace Dms.Api.Pages.DocumentsData
         [Inject] protected IMapper Mapper { get; set; }
         protected FileDataDto Dto = new();
         protected MudTabs tabs;
-        protected MudTabPanel accountingTab;
-        protected bool ReadOnly => false;
-        protected bool formInvalid;
-        protected bool accountingFormInvalid;
         [Inject]ILogger<DocumentDetailsPageBase> logger { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; }
+        [Inject] public IJSRuntime JS { get; set; }
 
         protected bool pageLoading = true;
 
