@@ -1,10 +1,7 @@
-﻿using AutoMapper;
-using Dms.Core.Application.Common.DTOs;
-using Dms.Core.Application.Common.Interfaces;
+﻿using Dms.Core.Application.Common.Interfaces;
 using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.JSInterop;
-using MudBlazor;
 
 namespace Dms.Api.Pages.DocumentsData
 {
@@ -12,13 +9,8 @@ namespace Dms.Api.Pages.DocumentsData
     {
         [Inject] private IDmsDbContext dbContext { get; set; }
         [Inject] public IJSRuntime JS { get; set; }
-        [Inject] public IMapper Mapper { get; set; }
         [Inject] public ILogger<DocumentDetails> logger { get; set; }
-
-        async Task OnFormSave()
-        {
-
-        }
+        [Inject] public NavigationManager NavigationManager { get; set; }
 
         async Task DownloadFile(string documentNumber)
         {
@@ -39,7 +31,19 @@ namespace Dms.Api.Pages.DocumentsData
             {
                 logger.LogError($"File not found: {ex.Message}");
             }
-            
+
+        }
+
+        private void NavigateBack()
+        {
+            if (!string.IsNullOrEmpty(Source))
+            {
+                NavigationManager.NavigateTo(Source);
+            }
+            else
+            {
+                NavigationManager.NavigateTo("/");
+            }
         }
     }
 }

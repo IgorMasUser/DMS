@@ -18,9 +18,10 @@ namespace Dms.Api.Pages.DocumentsData
         private bool loading;
         protected string? keyword;
         private int totalRecords;
+        [Inject] public ILogger<DocumentsData> logger { get; set; }
 
         [Inject] public IMapper Mapper { get; set; }
-        private FileDataDto fileDataDto = new FileDataDto();
+
         [Inject]
         private IDmsDbContext dbContext { get; set; }
 
@@ -33,7 +34,7 @@ namespace Dms.Api.Pages.DocumentsData
             {
                 loading = true;
 
-                var documents = dbContext.FilesData.Include(f=>f.FileAccounter);
+                var documents = dbContext.FilesData.Include(f => f.FileAccounter);
 
                 if (documents != null)
                 {
@@ -50,6 +51,11 @@ namespace Dms.Api.Pages.DocumentsData
                     return new GridData<FileDataDto> { TotalItems = 0, Items = new List<FileDataDto>() };
                 }
 
+            }
+            catch (Exception ex)
+            {
+                logger.LogError($"Error occurred while getting documents data: {ex.Message}");
+                return new GridData<FileDataDto> { TotalItems = 0, Items = new List<FileDataDto>() };
             }
             finally
             {
