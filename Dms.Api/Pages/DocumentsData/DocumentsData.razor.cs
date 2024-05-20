@@ -34,15 +34,14 @@ namespace Dms.Api.Pages.DocumentsData
             {
                 loading = true;
 
-                var documents = dbContext.FilesData.Include(f => f.FileAccounter);
-
+                var documents = await GetDocumentsData();
                 if (documents != null)
                 {
                     filesDataDto = Mapper.Map<List<FileDataDto>>(documents);
                     totalRecords = filesDataDto.Count();
                 }
 
-                if (filesDataDto != null)
+                if (filesDataDto != null && filesDataDto.Count() > 0)
                 {
                     return new GridData<FileDataDto> { TotalItems = totalRecords, Items = filesDataDto };
                 }
@@ -72,6 +71,21 @@ namespace Dms.Api.Pages.DocumentsData
         {
             keyword = text;
             await table.ReloadServerData();
+        }
+
+        private async Task<List<FileData>> GetDocumentsData()
+        {
+            IQueryable<FileData> query = dbContext.FilesData;
+
+            if (!string.IsNullOrWhiteSpace(keyword))
+            {
+                query = query.Where(f => f.DocumentNumber != null && f.DocumentNumber.Contains(keyword));
+            }
+
+            query = query.Include(f => f.FileAccounter);
+            var documents = await query.ToListAsync();
+
+            return documents;
         }
     }
 }
