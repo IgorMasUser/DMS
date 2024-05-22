@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Linq.Expressions;
 
-namespace Dms.Api.Extensions.Utils
-{
+namespace Dms.Core.Application.Common.Extensions.Utils;
+
     public static class DescriptionAttributeExtensions
     {
         public static string GetDescription(this Enum e)
@@ -32,4 +32,4 @@ namespace Dms.Api.Extensions.Utils
             return memberName;
         }
     }
-}
+

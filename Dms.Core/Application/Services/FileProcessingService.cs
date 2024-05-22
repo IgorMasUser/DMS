@@ -1,4 +1,5 @@
-﻿using Dms.Core.Application.Common.Interfaces;
+﻿using Dms.Core.Application.Common.Extensions.Utils;
+using Dms.Core.Application.Common.Interfaces;
 using Dms.Core.Application.Common.UIModels.Enums;
 
 namespace Dms.Core.Application.Services
@@ -24,7 +25,7 @@ namespace Dms.Core.Application.Services
             foreach (var file in files)
             {
                 string comment = $"File with document number {file.DocumentNumber} created";
-                await documentHistoryService.WriteHistoryAsync(file.Id, nameof(DocumentHistoryEvent.Created), comment, default);
+                await documentHistoryService.WriteHistoryAsync(file.Id, DocumentHistoryEvent.Created.GetDescription(), comment, default);
             }
         }
     }

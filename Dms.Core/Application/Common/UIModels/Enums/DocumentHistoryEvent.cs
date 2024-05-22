@@ -6,7 +6,7 @@ namespace Dms.Core.Application.Common.UIModels.Enums
     {
         [Description("Document created")]
         Created = 0,
-        [Description("Error creation")]
-        FailedWhenCreated = 1
+        [Description("Document deleted")]
+        Deleted = 1
     }
 }
