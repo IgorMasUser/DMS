@@ -1,22 +1,10 @@
 using Dms.Api.Extensions;
-using Dms.Api.Services.Navigation;
-using Dms.Core.Application.Common.Interfaces;
-using Dms.Core.Application.Services;
 using Dms.Core.Infrastructure.Logging;
-using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddRazorPages();
-builder.Services.AddServerSideBlazor();
-builder.Services.AddScoped<IMenuService, MenuService>();
-builder.Services.AddTransient<IFilesStatisticService, FilesStatisticService>();
-builder.Services.AddTransient<IDocumentHistoryService, DocumentHistoryService>();
 builder.Services.AddSqlServerDbContext(builder.Configuration);
-builder.Services.AddHttpContextAccessor();
-builder.Services.AddMudServices();
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddApplicationServices();
 
 builder.Host.AddSerilog();
 

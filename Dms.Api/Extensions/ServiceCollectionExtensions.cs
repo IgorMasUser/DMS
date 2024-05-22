@@ -2,6 +2,9 @@
 using Dms.Core.Infrastructure.Configuration;
 using Dms.Core.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
+using Dms.Api.Services.Navigation;
+using Dms.Core.Application.Services;
+using MudBlazor.Services;
 
 namespace Dms.Api.Extensions
 {
@@ -22,6 +25,20 @@ namespace Dms.Api.Extensions
             });
 
             services.AddScoped<IDmsDbContext>(provider => provider.GetRequiredService<IDbContextFactory<DmsDbContext>>().CreateDbContext());
+
+            return services;
+        }
+
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+        {
+            services.AddRazorPages();
+            services.AddServerSideBlazor();
+            services.AddScoped<IMenuService, MenuService>();
+            services.AddTransient<IFilesStatisticService, FilesStatisticService>();
+            services.AddTransient<IDocumentHistoryService, DocumentHistoryService>();
+            services.AddHttpContextAccessor();
+            services.AddMudServices();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             return services;
         }
