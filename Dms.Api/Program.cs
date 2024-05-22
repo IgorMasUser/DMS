@@ -12,6 +12,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<IMenuService, MenuService>();
 builder.Services.AddTransient<IFilesStatisticService, FilesStatisticService>();
+builder.Services.AddTransient<IDocumentHistoryService, DocumentHistoryService>();
 builder.Services.AddSqlServerDbContext(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddMudServices();

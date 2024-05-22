@@ -1,0 +1,50 @@
+﻿@using Dms.Api.Extensions.Utils;
+@using Dms.Core.Application.Common.DTOs;
+@using System.Globalization
+
+<MudPaper Elevation=4 Class="my-2 mt-0" Style="margin-top: 20px; padding: 20px;">
+    <MudText Typo="Typo.h6" Align="Align.Center" Class="mb-3">Document history</MudText>
+    <MudDataGrid ServerData="@(Reload)"
+                 T="DocumentHistoryDto"
+                 FixedHeader="true"
+                 FixedFooter="true"
+                 Loading="@loading">
+        <Columns>
+            <TemplateColumn Sortable=false Title=@currentDto.GetMemberDescription(x => x.Created)>
+                <CellTemplate>
+                    <MudText>
+                        @context.Item.Created
+                    </MudText>
+                </CellTemplate>
+            </TemplateColumn>
+            <TemplateColumn Sortable=false Title=@currentDto.GetMemberDescription(x => x.PerformedBy)>
+                <CellTemplate>
+                    <MudText>
+                        @context.Item.PerformedBy
+                    </MudText>
+                </CellTemplate>
+            </TemplateColumn>
+            <TemplateColumn Sortable=false Title=@currentDto.GetMemberDescription(x => x.Event)>
+                <CellTemplate>
+                    @context.Item.Event
+                </CellTemplate>
+            </TemplateColumn>
+            <TemplateColumn Sortable=false Title=@currentDto.GetMemberDescription(x => x.Comment)>
+                <CellTemplate>
+                    @(context.Item.Comment ?? string.Empty)
+                </CellTemplate>
+            </TemplateColumn>
+            <TemplateColumn Sortable=false Title=@currentDto.GetMemberDescription(x => x.Details)>
+                <CellTemplate>
+                    @(context.Item.Details ?? string.Empty)
+                </CellTemplate>
+            </TemplateColumn>
+        </Columns>
+        <NoRecordsContent>
+            <MudText>NoRecords</MudText>
+        </NoRecordsContent>
+        <LoadingContent>
+            <MudText>Loading</MudText>
+        </LoadingContent>
+    </MudDataGrid>
+</MudPaper>

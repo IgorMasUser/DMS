@@ -23,7 +23,6 @@ namespace Dms.Core.Application.Services
                 if (documentId <= 0) throw new ArgumentException("Invalid document ID.", nameof(documentId));
 
                 var data = await dbContext.DocumentHistory
-                    .Include(dh => dh.Document)
                     .Where(d => d.DocumentId == documentId)
                     .ToListAsync();
 

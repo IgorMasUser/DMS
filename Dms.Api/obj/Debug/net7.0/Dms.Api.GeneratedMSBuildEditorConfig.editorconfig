@@ -32,6 +32,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRG9jdW1lbnRzRGF0YVxQYXJ0c1xEb2N1bWVudERldGFpbHNCb2R5LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/Projects/Dms/Dms.Api/Pages/DocumentsData/Parts/DocumentDetailsHistory.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRG9jdW1lbnRzRGF0YVxQYXJ0c1xEb2N1bWVudERldGFpbHNIaXN0b3J5LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/Projects/Dms/Dms.Api/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
