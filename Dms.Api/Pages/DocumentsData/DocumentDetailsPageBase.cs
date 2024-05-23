@@ -19,6 +19,7 @@ namespace Dms.Api.Pages.DocumentsData
         [Inject]ILogger<DocumentDetailsPageBase> logger { get; set; }
         [Inject] public NavigationManager NavigationManager { get; set; }
         [Inject] public IJSRuntime JS { get; set; }
+        [Inject] protected ISnackbar SnackbarComponent { get; set; }
 
         protected bool pageLoading = true;
 

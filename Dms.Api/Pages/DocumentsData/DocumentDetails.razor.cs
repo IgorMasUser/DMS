@@ -1,7 +1,7 @@
-﻿using Dms.Core.Application.Common.Interfaces;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.JSInterop;
+using MudBlazor;
 
 namespace Dms.Api.Pages.DocumentsData
 {
@@ -23,13 +23,14 @@ namespace Dms.Api.Pages.DocumentsData
                     using var streamRef = new DotNetStreamReference(stream: ms);
 
                     await JS.InvokeVoidAsync("downloadFileFromStream", file.FileName, streamRef);
+                    SnackbarComponent.Add("File downloaded", Severity.Info);
                 }
             }
             catch (Exception ex)
             {
                 logger.LogError($"File not found: {ex.Message}");
+                SnackbarComponent.Add("Failed to download", Severity.Error);
             }
-
         }
 
         private void NavigateBack()

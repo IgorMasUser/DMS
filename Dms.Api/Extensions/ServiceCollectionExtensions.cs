@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Dms.Api.Services.Navigation;
 using Dms.Core.Application.Services;
 using MudBlazor.Services;
+using MudBlazor;
 
 namespace Dms.Api.Extensions
 {
@@ -37,7 +38,10 @@ namespace Dms.Api.Extensions
             services.AddTransient<IFilesStatisticService, FilesStatisticService>();
             services.AddTransient<IDocumentHistoryService, DocumentHistoryService>();
             services.AddHttpContextAccessor();
-            services.AddMudServices();
+            services.AddMudServices(config =>
+            {
+                config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomRight;
+            });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             return services;
