@@ -12,7 +12,7 @@ namespace Dms.Api.Pages.DocumentsData
     {
         [Parameter] public int? Id { get; set; }
         [SupplyParameterFromQuery][Parameter] public string? Source { get; set; }
-        [Inject] private IDmsDbContext dbContext { get; set; }
+        [Inject] protected IDmsDbContext dbContext { get; set; }
         [Inject] protected IMapper Mapper { get; set; }
         protected FileDataDto Dto = new();
         protected MudTabs tabs;

@@ -7,8 +7,6 @@ namespace Dms.Api.Pages.DocumentsData
 {
     public partial class DocumentDetails
     {
-        [Inject] private IDmsDbContext dbContext { get; set; }
-        [Inject] public IJSRuntime JS { get; set; }
         [Inject] public ILogger<DocumentDetails> logger { get; set; }
         [Inject] public NavigationManager NavigationManager { get; set; }
 
