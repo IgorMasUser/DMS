@@ -9,7 +9,7 @@
     <MudAppBar>
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
     </MudAppBar>
-    <MudDrawer @bind-Open="@_drawerOpen" Style="height: 100%; display: flex; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); border: 1px solid #ddd;">
+    <MudDrawer @bind-Open="@drawerOpen" Style="height: 100%; display: flex; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); border: 1px solid #ddd;">
         <MudContainer>
             <NavigationMenu />
         </MudContainer>
@@ -17,16 +17,24 @@
     <MudMainContent>
         <MudContainer MaxWidth=MaxWidth.ExtraLarge Class="mb-4 mt-4">
             <MudPaper Elevation="3" Class="pa-8" Width="100%">
-                <ChildContent>
-                    @Body
-                </ChildContent>
+                <ErrorBoundary @ref="errorBoundary">
+                    <ChildContent>
+                        @Body
+                    </ChildContent>
+                    <ErrorContent>
+                        <MudAlert Severity="Severity.Error" Variant="Variant.Filled">
+                            An error has occurred while processing your request.
+                        </MudAlert>
+                    </ErrorContent>
+                </ErrorBoundary>
             </MudPaper>
         </MudContainer>
     </MudMainContent>
 </MudLayout>
 
 @code {
-    bool _drawerOpen = true;
+    private ErrorBoundary? errorBoundary;
+    bool drawerOpen = true;
     MudTheme AppTheme = new MudTheme()
         {
             Palette = new PaletteLight()
@@ -38,6 +46,16 @@
         };
     void DrawerToggle()
     {
-        _drawerOpen = !_drawerOpen;
+        drawerOpen = !drawerOpen;
+    }
+
+    protected override void OnParametersSet()
+    {
+        ResetBoundary();
+    }
+
+    private void ResetBoundary()
+    {
+        errorBoundary?.Recover();
     }
 }
