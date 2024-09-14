@@ -115,7 +115,6 @@ E:\Projects\Dms\Dms.Api\obj\Debug\net7.0\staticwebassets.pack.json
 E:\Projects\Dms\Dms.Api\obj\Debug\net7.0\staticwebassets.build.json
 E:\Projects\Dms\Dms.Api\obj\Debug\net7.0\staticwebassets.development.json
 E:\Projects\Dms\Dms.Api\obj\Debug\net7.0\scopedcss\bundle\Dms.Api.styles.css
-E:\Projects\Dms\Dms.Api\obj\Debug\net7.0\Dms.Api.csproj.CopyComplete
 E:\Projects\Dms\Dms.Api\obj\Debug\net7.0\Dms.Api.dll
 E:\Projects\Dms\Dms.Api\obj\Debug\net7.0\refint\Dms.Api.dll
 E:\Projects\Dms\Dms.Api\obj\Debug\net7.0\Dms.Api.pdb
@@ -131,3 +130,5 @@ E:\Projects\Dms\Dms.Api\bin\Debug\net7.0\Humanizer.dll
 E:\Projects\Dms\Dms.Api\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
 E:\Projects\Dms\Dms.Api\bin\Debug\net7.0\Mono.TextTemplating.dll
 E:\Projects\Dms\Dms.Api\bin\Debug\net7.0\System.CodeDom.dll
+E:\Projects\Dms\Dms.Api\obj\Debug\net7.0\Dms.Api.sourcelink.json
+E:\Projects\Dms\Dms.Api\obj\Debug\net7.0\Dms.Api.csproj.Up2Date
